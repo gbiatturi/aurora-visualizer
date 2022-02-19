@@ -4,9 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import MenuHeader from './components/MenuHeader'
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <MenuHeader />
   </React.StrictMode>,
   document.getElementById('root')
 );
