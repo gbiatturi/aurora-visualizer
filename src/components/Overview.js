@@ -10,7 +10,6 @@ import {
 } from "semantic-ui-react";
 
 import { useEthers } from '@usedapp/core'
-import { formatEther } from '@ethersproject/units'
 
 import axios from 'axios'
 
@@ -29,7 +28,7 @@ const Overview = () => {
         activePage: 1
     })
 
-    const KEY = "FM9FQH85BJVI1B6JAQBCHK46FNHXQGGWIA"
+    const KEY = process.env.REACT_APP_KEY
 
     const getBalance = () => {
         return axios
