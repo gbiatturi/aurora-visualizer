@@ -22,8 +22,7 @@ const config = {
   readOnlyChainId: AuroraTestnet.chainId,
   readOnlyUrls: {
     [AuroraTestnet.chainId]: 'https://testnet.aurora.dev/',
-  },
-  multicallVersion: 2,
+  }
 }
 
 ReactDOM.render(

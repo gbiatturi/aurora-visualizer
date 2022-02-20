@@ -16,7 +16,7 @@ import axios from 'axios'
 
 const Overview = () => {
     // const { account } = useEthers()
-    const account = "0x355c1cf73c2c1d0193b0dac92863d5f254a3e83d" // Test account
+    const account = process.env.REACT_APP_TEST_ACCOUNT // Test account
 
     const [balance, setBalance] = useState({ pending: true })
     const [blockInfo, setBlockInfo] = useState({ pending: true })
