@@ -1,19 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { DAppProvider } from '@usedapp/core'
 
 import MenuHeader from './components/MenuHeader'
+import Overview from './components/Overview'
+
+// TODO: Pull Request to @usedapp/core to add Aurora chain model (support Aurora network)
+
+const AuroraTestnet = {
+  chainId: 1313161555,
+  chainName: 'Aurora Testnet',
+  isTestChain: true,
+  isLocalChain: false,
+  getExplorerAddressLink: (address) => `https://explorer.testnet.testnet.dev/address/${address}`,
+  getExplorerTransactionLink: (transactionHash) => `https://explorer.testnet.aurora.dev/tx/${transactionHash}`,
+}
+
+
+const config = {
+  readOnlyChainId: AuroraTestnet.chainId,
+  readOnlyUrls: {
+    [AuroraTestnet.chainId]: 'https://testnet.aurora.dev/',
+  },
+  multicallVersion: 2,
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <MenuHeader />
+    <DAppProvider config={config}>
+      <MenuHeader />
+      <Overview />
+    </DAppProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
