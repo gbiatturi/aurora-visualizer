@@ -13,7 +13,7 @@ import { useEthers } from '@usedapp/core'
 
 import axios from 'axios'
 
-const Overview = () => {
+const Home = () => {
     // const { account } = useEthers()
     const account = process.env.REACT_APP_TEST_ACCOUNT // Test account
 
@@ -81,18 +81,6 @@ const Overview = () => {
             });
         }
     }, [])
-
-    useEffect(() => {
-        console.log("pagination", pagination)
-    }, [pagination])
-
-    useEffect(() => {
-        console.log("blockInfo", blockInfo)
-    }, [blockInfo])
-
-    useEffect(() => {
-        console.log("balance", balance)
-    }, [balance])
 
     return (
         <Container>
@@ -196,4 +184,4 @@ const Overview = () => {
     );
 }
 
-export default Overview;
+export default Home;

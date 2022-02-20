@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
 import './index.css';
 import { DAppProvider } from '@usedapp/core'
 
 import MenuHeader from './components/MenuHeader'
-import Overview from './components/Overview'
+import Home from './components/Home'
+import NftGallery from './components/NftGallery'
+import Transaction from './components/Transaction'
+
 
 // TODO: Pull Request to @usedapp/core to add Aurora chain model (support Aurora network)
 
@@ -28,8 +33,29 @@ const config = {
 ReactDOM.render(
   <React.StrictMode>
     <DAppProvider config={config}>
-      <MenuHeader />
-      <Overview />
+      <BrowserRouter>
+        <MenuHeader />
+        <Routes>
+          <Route
+            path="/"
+            exact
+            element={<Home />}
+          />
+
+          <Route
+            path="/gallery"
+            exact
+            element={<NftGallery />}
+          />
+
+          <Route
+            path="/transaction"
+            exact
+            element={<Transaction />}
+          />
+        </Routes>
+
+      </BrowserRouter>
     </DAppProvider>
   </React.StrictMode>,
   document.getElementById('root')
