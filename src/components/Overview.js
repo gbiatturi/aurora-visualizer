@@ -176,7 +176,11 @@ const Overview = () => {
                                 }
                             </Table.Body>
                         </Table>
+                    </Grid.Column>
+                </Grid.Row>
 
+                <Grid.Row centered columns={2}>
+                    <Grid.Column>
                         {
                             !pagination.pending &&
                             <Pagination
@@ -185,7 +189,6 @@ const Overview = () => {
                                 onPageChange={changePage}
                             />
                         }
-
                     </Grid.Column>
                 </Grid.Row>
 
