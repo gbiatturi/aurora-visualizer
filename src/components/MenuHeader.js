@@ -19,8 +19,8 @@ const MenuHeader = () => {
   }
 
   return (
-    <Menu borderless>
-      <Container>
+    <Container style={{ margin: "25px 0 0 0" }}>
+      <Menu>
         <Menu.Item>
           <Image size='mini' src='/logo192.png' />
         </Menu.Item>
@@ -45,8 +45,8 @@ const MenuHeader = () => {
           {!account && <Button primary onClick={() => activateBrowserWallet()}>Connect</Button>}
           {account && <Button secondary onClick={() => deactivate()}>Disconnect</Button>}
         </Menu.Item>
-      </Container>
-    </Menu>
+      </Menu>
+    </Container>
   );
 }
 
