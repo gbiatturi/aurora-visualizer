@@ -9,15 +9,15 @@ import {
     Label
 } from "semantic-ui-react";
 
-import { useEthers } from '@usedapp/core'
+import { formatEther } from '@ethersproject/units'
+import { useEtherBalance, useEthers } from '@usedapp/core'
 
 import axios from 'axios'
 
 const Home = () => {
-    // const { account } = useEthers()
-    const account = process.env.REACT_APP_TEST_ACCOUNT // Test account
+    const { account } = useEthers()
+    const etherBalance = useEtherBalance(account)
 
-    const [balance, setBalance] = useState({ pending: true })
     const [blockInfo, setBlockInfo] = useState({ pending: true })
     const [pagination, setPagination] = useState({
         pending: true,
@@ -29,12 +29,6 @@ const Home = () => {
     })
 
     const KEY = process.env.REACT_APP_KEY
-
-    const getBalance = () => {
-        return axios
-            .get(`https://api-testnet.aurorascan.dev/api?module=account&action=balance&address=${account}&tag=latest&apikey=${KEY}`)
-
-    }
 
     const getBlockInfo = () => {
         return axios
@@ -58,10 +52,6 @@ const Home = () => {
 
     useEffect(() => {
         if (account) {
-
-            getBalance().then((result) => {
-                setBalance({ pending: false, value: result.data.result.length != 0 ? parseInt(result.data.result) : 0 });
-            });
 
             getBlockInfo().then((result) => {
                 setBlockInfo({
@@ -106,7 +96,7 @@ const Home = () => {
                                     <Icon name="ethereum"></Icon> Current balance
                                 </Card.Header>
                                 <Card.Description textAlign="left">
-                                    {!balance.pending && balance.value} ETH
+                                    {etherBalance && formatEther(etherBalance)} ETH
                                 </Card.Description>
                             </Card.Content>
                         </Card>
