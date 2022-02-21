@@ -52,7 +52,6 @@ const Home = () => {
 
     useEffect(() => {
         if (account) {
-
             getBlockInfo().then((result) => {
                 setBlockInfo({
                     pending: false,
@@ -70,7 +69,7 @@ const Home = () => {
                 });
             });
         }
-    }, [])
+    }, [account])
 
     return (
         <Container>
