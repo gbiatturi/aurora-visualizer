@@ -3,7 +3,8 @@ import {
   Container,
   Menu,
   Image,
-  Button
+  Button,
+  Segment
 } from "semantic-ui-react";
 
 import { NavLink, withRouter } from 'react-router-dom'
@@ -19,34 +20,36 @@ const MenuHeader = () => {
   }
 
   return (
-    <Container style={{ margin: "25px 0 0 0" }}>
-      <Menu>
-        <Menu.Item>
-          <Image size='mini' src='/logo192.png' />
-        </Menu.Item>
-        <Menu.Item header position='left'>Aurora Visualizer</Menu.Item>
+    <Segment>
+      <Container>
+        <Menu secondary stackable>
+          <Menu.Item>
+            <Image size='mini' src='/logo192.png' />
+          </Menu.Item>
+          <Menu.Item header position='left'>Aurora Visualizer</Menu.Item>
 
-        <Menu.Item as={NavLink} to="/"
-          name='home'
-          active={activeItem === 'home'}
-          onClick={handleItemClick}>Home</Menu.Item>
+          <Menu.Item as={NavLink} to="/"
+            name='home'
+            active={activeItem === 'home'}
+            onClick={handleItemClick}>Home</Menu.Item>
 
-        <Menu.Item as={NavLink} to="/gallery"
-          name='gallery'
-          active={activeItem === 'gallery'}
-          onClick={handleItemClick}>NFT Gallery</Menu.Item>
+          <Menu.Item as={NavLink} to="/gallery"
+            name='gallery'
+            active={activeItem === 'gallery'}
+            onClick={handleItemClick}>NFT Gallery</Menu.Item>
 
-        <Menu.Item as={NavLink} to="/transaction"
-          name='transaction'
-          active={activeItem === 'transaction'}
-          onClick={handleItemClick}>Transaction</Menu.Item>
+          <Menu.Item as={NavLink} to="/transaction"
+            name='transaction'
+            active={activeItem === 'transaction'}
+            onClick={handleItemClick}>Transaction</Menu.Item>
 
-        <Menu.Item position="right">
-          {!account && <Button primary onClick={() => activateBrowserWallet()}>Connect</Button>}
-          {account && <Button secondary onClick={() => deactivate()}>Disconnect</Button>}
-        </Menu.Item>
-      </Menu>
-    </Container>
+          <Menu.Item position="right">
+            {!account && <Button primary onClick={() => activateBrowserWallet()}>Connect</Button>}
+            {account && <Button secondary onClick={() => deactivate()}>Disconnect</Button>}
+          </Menu.Item>
+        </Menu>
+      </Container>
+    </Segment>
   );
 }
 
