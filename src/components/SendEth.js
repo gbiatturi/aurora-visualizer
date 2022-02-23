@@ -12,7 +12,6 @@ import Account from './Account'
 import TransactionStatus from './TransactionStatus'
 
 import { useSendTransaction, useEthers } from '@usedapp/core'
-import { formatEther } from '@ethersproject/units'
 import { utils } from 'ethers'
 
 const SendEth = () => {
