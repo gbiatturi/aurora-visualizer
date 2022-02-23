@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import {
     Card,
     Grid,
-    Icon,
     Table,
     Pagination,
     Label,
@@ -11,14 +10,14 @@ import {
     Segment
 } from "semantic-ui-react";
 
-import { formatEther } from '@ethersproject/units'
-import { useEtherBalance, useEthers } from '@usedapp/core'
+import Account from './Account'
+
+import { useEthers } from '@usedapp/core'
 
 import axios from 'axios'
 
-const Home = () => {
+const Overview = () => {
     const { account } = useEthers()
-    const etherBalance = useEtherBalance(account)
 
     const [blockInfo, setBlockInfo] = useState({ pending: true })
     const [pagination, setPagination] = useState({
@@ -81,36 +80,7 @@ const Home = () => {
             {
                 account ?
                     <Segment vertical>
-                        <Grid container centered stackable>
-                            <Grid.Row columns={2}>
-                                <Grid.Column width={10}>
-                                    <Card fluid>
-                                        <Card.Content>
-                                            <Card.Header>
-                                                Account
-                                            </Card.Header>
-                                            <Card.Description textAlign="left">
-                                                {account}
-                                            </Card.Description>
-                                        </Card.Content>
-                                    </Card>
-                                </Grid.Column>
-
-                                <Grid.Column width={5}>
-                                    <Card fluid>
-                                        <Card.Content>
-                                            <Card.Header>
-                                                <Icon name="ethereum"></Icon> Current balance
-                                            </Card.Header>
-                                            <Card.Description textAlign="left">
-                                                {etherBalance && formatEther(etherBalance) + " ETH"}
-                                            </Card.Description>
-                                        </Card.Content>
-                                    </Card>
-                                </Grid.Column>
-                            </Grid.Row>
-                        </Grid>
-
+                        <Account></Account>
                         <Grid container centered stackable>
                             <Grid.Row>
                                 <Grid.Column width={15}>
@@ -138,7 +108,7 @@ const Home = () => {
                                                 </Table.Row>
 
                                                 {
-                                                    pagination.pending || pagination.txsDisplay.length == 0
+                                                    pagination.pending || pagination.txsDisplay.length === 0
                                                         ? (
                                                             <Table.Row>
                                                                 <Table.Cell colSpan='3' textAlign='center'>
@@ -174,7 +144,7 @@ const Home = () => {
                             <Grid.Row centered columns={2}>
                                 <Grid.Column>
                                     {
-                                        !pagination.pending && pagination.txsDisplay.length != 0 &&
+                                        !pagination.pending && pagination.txsDisplay.length !== 0 &&
                                         <Pagination
                                             defaultActivePage={1}
                                             totalPages={Math.ceil(pagination.txs.length / 5)}
@@ -209,4 +179,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default Overview;

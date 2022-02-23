@@ -6,9 +6,9 @@ import './index.css';
 import { DAppProvider } from '@usedapp/core'
 
 import MenuHeader from './components/MenuHeader'
-import Home from './components/Home'
+import Overview from './components/Overview'
 import NftGallery from './components/NftGallery'
-import Transaction from './components/Transaction'
+import SendEth from './components/SendEth'
 
 // TODO: Pull Request to @usedapp/core to add Aurora chain model (support Aurora network)
 const AuroraTestnet = {
@@ -38,7 +38,7 @@ ReactDOM.render(
           <Route
             path="/"
             exact
-            element={<Home />}
+            element={<Overview />}
           />
 
           <Route
@@ -48,12 +48,11 @@ ReactDOM.render(
           />
 
           <Route
-            path="/transaction"
+            path="/send"
             exact
-            element={<Transaction />}
+            element={<SendEth />}
           />
         </Routes>
-
       </BrowserRouter>
     </DAppProvider>
   </React.StrictMode>,

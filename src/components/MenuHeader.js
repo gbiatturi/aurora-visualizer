@@ -7,7 +7,7 @@ import {
   Segment
 } from "semantic-ui-react";
 
-import { NavLink, withRouter } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import { useEthers } from '@usedapp/core'
 
@@ -29,19 +29,19 @@ const MenuHeader = () => {
           <Menu.Item header position='left'>Aurora Visualizer</Menu.Item>
 
           <Menu.Item as={NavLink} to="/"
-            name='home'
-            active={activeItem === 'home'}
-            onClick={handleItemClick}>Home</Menu.Item>
+            name='overview'
+            active={activeItem === 'overview'}
+            onClick={handleItemClick}>Overview</Menu.Item>
 
           <Menu.Item as={NavLink} to="/gallery"
             name='gallery'
             active={activeItem === 'gallery'}
             onClick={handleItemClick}>NFT Gallery</Menu.Item>
 
-          <Menu.Item as={NavLink} to="/transaction"
-            name='transaction'
-            active={activeItem === 'transaction'}
-            onClick={handleItemClick}>Transaction</Menu.Item>
+          <Menu.Item as={NavLink} to="/send"
+            name='send'
+            active={activeItem === 'send'}
+            onClick={handleItemClick}>Send eth</Menu.Item>
 
           <Menu.Item position="right">
             {!account && <Button primary onClick={() => activateBrowserWallet()}>Connect</Button>}
